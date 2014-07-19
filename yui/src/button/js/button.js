@@ -91,7 +91,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
             return;
         }
 
-        var twoicons = ['iconone', 'icontwo'];
+        var twoicons = ['iconone'];
 
         Y.Array.each(twoicons, function(theicon) {
             // Add the generico icon/buttons
