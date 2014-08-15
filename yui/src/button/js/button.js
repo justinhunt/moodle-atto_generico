@@ -91,9 +91,9 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
             return;
         }
 
-        var twoicons = ['iconone'];
+        var theicon = 'iconone';
 
-        Y.Array.each(twoicons, function(theicon) {
+
             // Add the generico icon/buttons
             this.addButton({
                 icon: 'ed/' + theicon,
@@ -102,20 +102,9 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
                 callback: this._displayDialogue,
                 callbackArgs: theicon
             });
-        }, this);
 
     },
 
-    /**
-     * Get the id of the flavor control where we store the ice cream flavor
-     *
-     * @method _getFlavorControlName
-     * @return {String} the name/id of the flavor form field
-     * @private
-     */
-    _getFlavorControlName: function(){
-        return(this.get('host').get('elementid') + '_' + FLAVORCONTROL);
-    },
 
      /**
      * Display the generico Recorder files.
