@@ -73,18 +73,17 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions) {
 			//se we uniqu'ify it. That makes it look complicated. But we are just removing doubles
 			$allvariables = atto_generico_fetch_variables($templates['template_' . $tempindex]);
 			$uniquevariables = array_unique($allvariables);
+			$usevariables=array();
 			
-			if(count($allvariables) == count($uniquevariables)){
-				$variables[] = $uniquevariables;
-			
-			}else{
-				//we need to reallocate array keys, or YUI gets confused later
-				$usevariables = array();
-				while(count($uniquevariables)>0){
-					$usevariables[] = array_shift($uniquevariables);
-				}
-				$variables[] = $usevariables;
+			//we need to reallocate array keys if the array size was changed in unique'ifying it
+			//we also take the opportunity to remove user variables, since they aren't needed here.
+			while(count($uniquevariables)>0){
+					$tempvar = array_shift($uniquevariables);
+					if(strpos($tempvar, 'USER:')===false){
+						$usevariables[] = $tempvar;
+					}
 			}
+			$variables[] = $usevariables;
 			
 			//stash the defaults for this template
 			$defaults[] = $templates['templatedefaults_' . $tempindex];

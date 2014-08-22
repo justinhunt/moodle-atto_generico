@@ -63,7 +63,7 @@ var BUTTONTEMPLATE = '' +
 
 var FIELDTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}' +
-            '<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}" value="{{defaultvalue}}"></input>' +
+            '&nbsp;<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}" value="{{defaultvalue}}"></input>' +
         '</div>';
 
 var SUBMITTEMPLATE = '' +
