@@ -36,3 +36,4 @@ $string['defaultflavor'] = 'Default Ice Cream Flavor';
 $string['fieldsheader'] = 'Enter details for : ';
 $string['nofieldsheader'] = 'Insert : ';
 $string['chooseinsert'] = 'What do you want to insert?';
+$string['generico:visible'] = 'visible';
