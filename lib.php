@@ -37,7 +37,6 @@ function atto_generico_strings_for_js() {
                                           'chooseinsert',
                                           'fieldsheader',
                                           'nofieldsheader',
-                                          'enterflavor',
                                           'dialogtitle'),
                                     'atto_generico');
 }
@@ -79,7 +78,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions) {
 			//we also take the opportunity to remove user variables, since they aren't needed here.
 			while(count($uniquevariables)>0){
 					$tempvar = array_shift($uniquevariables);
-					if(strpos($tempvar, 'USER:')===false){
+					if(strpos($tempvar, 'USER:')===false && $tempvar!='AUTOID'){
 						$usevariables[] = $tempvar;
 					}
 			}
