@@ -304,12 +304,12 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     _getDefArray: function(thedefaults){
     	//defaults array 
     	var defaultsarray=[];
-    	var defaultstemparray = thedefaults.split(',');
+    	var defaultstemparray = thedefaults.match(/([^=,]*)=("[^"]*"|[^,"]*)/g);//thedefaults.split(',');
     	Y.Array.each(defaultstemparray, function(defset){
     		//loop start
     		var defsetarray = defset.split('=');
     		if(defsetarray && defsetarray.length>1){
-    			defaultsarray[defsetarray[0]] = defsetarray[1];
+    			defaultsarray[defsetarray[0]] = defsetarray[1].replace(/"/g,'');
     		}
     	 //loop end
         }, this);
@@ -332,10 +332,11 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         var thekey = this.get('keys')[templateindex];
         var thevariables=this.get('variables')[templateindex];
         var thedefaults=this.get('defaults')[templateindex];
+        var theend=this.get('ends')[templateindex];
         var defaultsarray=this._getDefArray(thedefaults);
         
         //add key to return string
-        retstring += thekey;
+        retstring += '"' + thekey + '"';
         
         //add variables to return string
          Y.Array.each(thevariables, function(variable, currentindex) {
@@ -343,13 +344,18 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         	var thefield = Y.one('.' + CSS.TEMPLATEVARIABLE + '_' + currentindex);
         	var thevalue = thefield.get('value');
         	if(thevalue && thevalue!=defaultsarray[variable]){
-        		retstring += ',' + variable + '=' + thevalue;
+        		retstring += ',' + variable + '="' + thevalue + '"';
         	}
         //loop end
         }, this);
         
         //close out return string
         retstring += "}";
+        
+        //add an end tag, if we need to
+        if(theend){
+        	retstring += "<br/>{GENERICO:type=" + thekey + "_end}";
+        }
         
 
         this.editor.focus();
@@ -371,6 +377,11 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     },
 
     defaults: {
+        value: null
+    }
+    ,
+
+    ends: {
         value: null
     }
  }
