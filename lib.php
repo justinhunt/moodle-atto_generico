@@ -59,7 +59,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions) {
 	$defaults = array();
 	
 	//put our template into a form thats easy to process in JS
-	for($tempindex=1;$tempindex<11;$tempindex++){
+	for($tempindex=1;$tempindex<21;$tempindex++){
 			if(empty($templates['template_' . $tempindex])){
 				continue;
 			}
