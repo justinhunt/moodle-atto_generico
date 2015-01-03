@@ -57,10 +57,10 @@ var BUTTONSHEADERTEMPLATE = '' +
         '</div>';
         
 var BUTTONTEMPLATE = '' +
-        '<div id="{{elementid}}_{{innerform}}" class="mdl-align">' +
+        '<div id="{{elementid}}_{{innerform}}" class="atto_generico_buttons mdl-align">' +
             '<button class="' + CSS.KEYBUTTON + '_{{templateindex}}">{{key}}</button>' +
         '</div>';
-
+		
 var FIELDTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}' +
             '&nbsp;<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}" value="{{defaultvalue}}"></input>' +
@@ -354,7 +354,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         
         //add an end tag, if we need to
         if(theend){
-        	retstring += "<br/>{GENERICO:type=" + thekey + "_end}";
+        	retstring += '<br/>{GENERICO:type="' + thekey + '"_end}';
         }
         
 
