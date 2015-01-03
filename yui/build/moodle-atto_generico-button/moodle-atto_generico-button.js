@@ -356,7 +356,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         
         //add an end tag, if we need to
         if(theend){
-        	retstring += '<br/>{GENERICO:type="' + thekey + '"_end}';
+        	retstring += '<br/>{GENERICO:type="' + thekey + '_end"}';
         }
         
 
