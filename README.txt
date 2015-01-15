@@ -1,60 +1,37 @@
-Template for new Atto plugins for Moodle
-========================================
+Generico for Moodle Atto
 
-The following steps should get you up and running with
-this module template code.
+This is a companion for the Moodle Generico filter. It will display a button and a form for each Generico filter template you have declared.
+It will not work without the Generico Filter. You *must* install that first or at the same time.
 
-* DO NOT PANIC!
+1. Download
+============
+Download the plugin from: https://github.com/justinhunt/moodle-atto_generico
 
-* Unzip the archive and read this file. (so far so good eh)
 
-* Rename the generico/ folder to the name of your module (eg "widget").
-  The plugin folder MUST be lower case and can't contain underscores.
-  You shoudl check the Moodle plugin repository at
-  https://moodle.org/plugins/browse.php?list=category&id=53 to confirm that
-  the name you wish to use isn't already in use.
-  Registering the plugin name at http://moodle.org/plugins will secure it
-  for you.
+2 Unzip / Rename / Upload
+============
+Expand (unzip) the zip file. 
 
-* Edit all the files in this directory and its subdirectories and change
-  all the instances of the string "generico" to your atto plugin name
-  (eg "widget"). If you are using Linux, you can use the following command
-  $ find . -type f -exec sed -i 's/generico/widget/g' {} \;
+Rename the main folder to "generico." It should contain all the files like "version.php." 
 
-  On a mac, use:
-  $ find . -type f -exec sed -i '' 's/generico/widget/g' {} \;
+Upload the "generico" folder into the folder
 
-* Rename the file lang/en/atto_generico.php to lang/en/atto_widget.php
-  where "widget" is the name of your atto plugin
+[PATH TO MOODLE]/lib/editor/atto/plugins 
 
-* Open yui/src/button/build.json and yui/src/button/meta/button.json and
-  replace generico with the name of your plugin.
 
-* Place the plugin folder folder into the /lib/editor/atto/plugins folder of the moodle
-  directory.
+3. Get Moodle to Install It 
+============
+Visit Settings > Site Administration > Notifications, and let Moodle guide you through the install.
 
-* Modify version.php and set the initial version of your module.
 
-* Visit Settings > Site Administration > Notifications, and let Moodle guide you through the install.
+4. Configure it
+============
+Go to Site Administration > Plugins > Text Editors > Atto Toolbar Settings  
 
-* Go to Site Administration > Plugins > Text Editors > Atto Toolbar Settings
-  and you should find that this plugin has been added to the list of
-  installed modules.
-  IMPORTANT: Now add the name of your plugin to the menu structure near the bottom of the page
-  e.g style1 = title, bold, italic, widget
+Now add Generico to the menu structure near the bottom of the page
+
+  e.g style1 = title, bold, italic, generico
+
   (where widget is the name of your atto plugin)
-  
-* You will need to generate the js for your editor icon button. 
-  Your icon won't even show until you have done this.
-  The source for the button is at yui/src/button/js/button.js
-  Changes to button.js won't do anything until you have run "shifter" over them.
-  See:  http://docs.moodle.org/dev/YUI/Shifter
-  
 
-* You may now proceed to run your own code in an attempt to develop
-  your module. 
-
-  For more information on developing Atto plugins
-  see: http://docs.moodle.org/dev/Atto#Atto_Plugins
-
-Good luck!
+Thats all. The Generico icon, a big grey G. should now appear on the Atto HTML editor toolbar. When you click it, Generico will give you a list of all the templates. Click the one you want and Generico will build a nice form for you to help you insert it.
