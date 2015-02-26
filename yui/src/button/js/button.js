@@ -63,13 +63,13 @@ var BUTTONTEMPLATE = '' +
 		
 var FIELDTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}' +
-            '&nbsp;<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}" value="{{defaultvalue}}"></input>' +
+            '&nbsp;<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}} atto_generico_field" value="{{defaultvalue}}"></input>' +
         '</div>';
 var SELECTCONTAINERTEMPLATE = '' +
             '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}</div>';
 			
 var SELECTTEMPLATE = '' +
-            '<select class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}"></select>';
+            '<select class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}} atto_generico_field"></select>';
 
 var OPTIONTEMPLATE ='' +
 		'<option value="{{option}}">{{option}}</option>';
