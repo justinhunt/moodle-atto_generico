@@ -65,6 +65,14 @@ var FIELDTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}' +
             '&nbsp;<input type="text" class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}" value="{{defaultvalue}}"></input>' +
         '</div>';
+var SELECTCONTAINERTEMPLATE = '' +
+            '<div id="{{elementid}}_{{innerform}}" class="mdl-align">{{variable}}</div>';
+			
+var SELECTTEMPLATE = '' +
+            '<select class="' + CSS.TEMPLATEVARIABLE + '_{{variableindex}}"></select>';
+
+var OPTIONTEMPLATE ='' +
+		'<option value="{{option}}">{{option}}</option>';
 
 var SUBMITTEMPLATE = '' +
   '<form class="atto_form">' +
@@ -252,18 +260,51 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     	var thedefaults=this.get('defaults')[templateindex];
     	
     	//defaults array 
-    	var defaultsarray=this._getDefArray(thedefaults);
-
+    	//var defaultsarray=this._getDefArray(thedefaults);
+		var defaultsarray=thedefaults;
+		
     	 Y.Array.each(thevariables, function(thevariable, currentindex) { 	 
             //loop start
-      
-             var template = Y.Handlebars.compile(FIELDTEMPLATE),
-            	content = Y.Node.create(template({
-            	elementid: this.get('host').get('elementid'),
-                variable: thevariable,
-                defaultvalue: defaultsarray[thevariable],
-                variableindex: currentindex
-            }));
+			if(defaultsarray[thevariable].indexOf('|')>-1){
+			
+				var containertemplate = Y.Handlebars.compile(SELECTCONTAINERTEMPLATE),
+					content = Y.Node.create(containertemplate({
+					elementid: this.get('host').get('elementid'),
+					variable: thevariable,
+					defaultvalue: defaultsarray[thevariable],
+					variableindex: currentindex
+				}));
+			
+				var selecttemplate = Y.Handlebars.compile(SELECTTEMPLATE),
+					selectbox = Y.Node.create(selecttemplate({
+					variable: thevariable,
+					defaultvalue: defaultsarray[thevariable],
+					variableindex: currentindex
+				}));
+			
+				var opts = defaultsarray[thevariable].split('|');
+				var htmloptions="";
+				var opttemplate = Y.Handlebars.compile(OPTIONTEMPLATE);
+				Y.Array.each(opts, function(opt, optindex) {
+					var optcontent = Y.Node.create(opttemplate({
+							option: opt
+						}));
+					selectbox.appendChild(optcontent);
+				});
+				content.appendChild(selectbox);
+				
+			}else{
+			
+				 var template = Y.Handlebars.compile(FIELDTEMPLATE),
+					content = Y.Node.create(template({
+					elementid: this.get('host').get('elementid'),
+					variable: thevariable,
+					defaultvalue: defaultsarray[thevariable],
+					variableindex: currentindex
+				}));
+			}
+			
+			
             allcontent.push(content);
             //loop end
         }, this);
@@ -333,7 +374,8 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         var thevariables=this.get('variables')[templateindex];
         var thedefaults=this.get('defaults')[templateindex];
         var theend=this.get('ends')[templateindex];
-        var defaultsarray=this._getDefArray(thedefaults);
+      //  var defaultsarray=this._getDefArray(thedefaults);
+          var defaultsarray=thedefaults;
         
         //add key to return string
         retstring += '"' + thekey + '"';

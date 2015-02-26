@@ -85,7 +85,8 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions) {
 			$variables[] = $usevariables;
 			
 			//stash the defaults for this template
-			$defaults[] = $templates['templatedefaults_' . $tempindex];
+			//$defaults[] = $templates['templatedefaults_' . $tempindex];
+			$defaults[] = atto_generico_fetch_filter_properties($templates['templatedefaults_' . $tempindex]);
 			
 			$ends[] = $templates['templateend_' . $tempindex];
 	}
@@ -125,5 +126,30 @@ function atto_generico_fetch_variables($template){
 	}else{
 		return array();
 	}
+}
+
+function atto_generico_fetch_filter_properties($propstring){
+	//Now we just have our properties string
+	//Lets run our regular expression over them
+	//string should be property=value,property=value
+	//got this regexp from http://stackoverflow.com/questions/168171/regular-expression-for-parsing-name-value-pairs
+	$regexpression='/([^=,]*)=("[^"]*"|[^,"]*)/';
+	$matches; 	
+
+	//here we match the filter string and split into name array (matches[1]) and value array (matches[2])
+	//we then add those to a name value array.
+	$itemprops = array();
+	if (preg_match_all($regexpression, $propstring,$matches,PREG_PATTERN_ORDER)){		
+		$propscount = count($matches[1]);
+		for ($cnt =0; $cnt < $propscount; $cnt++){
+			// echo $matches[1][$cnt] . "=" . $matches[2][$cnt] . " ";
+			$newvalue = $matches[2][$cnt];
+			//this could be done better, I am sure. WE are removing the quotes from start and end
+			//this wil however remove multiple quotes id they exist at start and end. NG really
+			$newvalue = trim($newvalue,'"');
+			$itemprops[trim($matches[1][$cnt])]=$newvalue;
+		}
+	}
+	return $itemprops;
 }
 
