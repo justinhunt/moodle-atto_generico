@@ -267,7 +267,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
 		
     	 Y.Array.each(thevariables, function(thevariable, currentindex) { 	 
             //loop start
-			if(defaultsarray[thevariable].indexOf('|')>-1){
+			if((thevariable in defaultsarray) && defaultsarray[thevariable].indexOf('|')>-1){
 			
 				var containertemplate = Y.Handlebars.compile(SELECTCONTAINERTEMPLATE),
 					content = Y.Node.create(containertemplate({
