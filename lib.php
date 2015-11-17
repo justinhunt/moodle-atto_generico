@@ -58,8 +58,14 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions) {
 	$variables = array();
 	$defaults = array();
 	
+	//get the no. of templates
+	if(!array_key_exists('templatecount',$templates)){
+		$templatecount=21;
+	}else{
+		$templatecount = $templates['templatecount']+1;
+	}
 	//put our template into a form thats easy to process in JS
-	for($tempindex=1;$tempindex<21;$tempindex++){
+	for($tempindex=1;$tempindex<$templatecount;$tempindex++){
 			if(empty($templates['template_' . $tempindex])){
 				continue;
 			}

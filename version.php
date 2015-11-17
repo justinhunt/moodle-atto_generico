@@ -24,11 +24,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015030100;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2015111901;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2013110500;        // Requires this Moodle version.
 $plugin->component = 'atto_generico';  // Full name of the plugin (used for diagnostics).
 $plugin->maturity  = MATURITY_STABLE;
 // Human readable version informatiomn
-$plugin->release   = '1.0.2 (Build 2015011500)';
+$plugin->release   = '1.0.3 (Build 2015111901)';
 $plugin->dependencies = array('filter_generico' => 2015010102);
 
