@@ -41,6 +41,7 @@ var CSS = {
         INPUTCANCEL: 'atto_media_urlentrycancel',
         KEYBUTTON: 'atto_generico_templatebutton',
         HEADERTEXT: 'atto_generico_headertext',
+        INSTRUCTIONSTEXT: 'atto_generico_instructionstext',
         TEMPLATEVARIABLE: 'atto_generico_templatevariable',
         FLAVORCONTROL: 'flavorcontrol'
     },
@@ -51,6 +52,7 @@ var CSS = {
 var FIELDSHEADERTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">' +
             '<h4 class="' + CSS.HEADERTEXT + '">{{headertext}} {{key}}</h4>' +
+            '<div class="' + CSS.INSTRUCTIONSTEXT + '">{{instructions}}</div>' +
         '</div>';
 
 var BUTTONSHEADERTEMPLATE = '' +
@@ -101,23 +103,34 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
             return;
         }
 
-        var theicon = 'iconone';
 
-
+        if(this.get('customicon')) {
+            var iconurl = decodeURIComponent(this.get('customicon'));
+            var iconname = 'atto_generico';
             // Add the generico icon/buttons
             this.addButton({
-                icon: 'ed/' + theicon,
-                iconComponent: 'atto_generico',
-                buttonName: theicon,
+                iconurl: iconurl,
+                buttonName: iconname,
                 callback: this._displayDialogue,
-                callbackArgs: theicon
+                callbackArgs: iconname
             });
 
+        }else{
+            // Add the generico icon/buttons
+            var iconname = 'iconone';
+            this.addButton({
+                icon: 'ed/' + iconname,
+                iconComponent: 'atto_generico',
+                buttonName: iconname,
+                callback: this._displayDialogue,
+                callbackArgs: iconname
+            });
+        }
     },
 
 
      /**
-     * Display the generico Recorder files.
+     * Display the generico dialog
      *
      * @method _displayDialogue
      * @private
@@ -166,7 +179,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     },
 
 	    /**
-     * Display the generico Recorder files.
+     * Display the chosen generico template form
      *
      * @method _displayDialogue
      * @private
@@ -188,6 +201,8 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
 
         //get fields , 1 per variable
         var fields = this._getTemplateFields(templateindex);
+        var instructions = this.get('instructions')[templateindex];
+            instructions = decodeURIComponent(instructions);
 	
 		//get header node. It will be different if we have no fields
 		if(fields && fields.length>0){
@@ -198,7 +213,8 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
 		var template = Y.Handlebars.compile(FIELDSHEADERTEMPLATE),
             	content = Y.Node.create(template({
                 key: this.get('keys')[templateindex],
-                headertext: useheadertext
+                headertext: useheadertext,
+                instructions: instructions
             }));
         var header = content;
 		
@@ -424,7 +440,12 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         value: null
     }
     ,
-
+    instructions: {
+        value: null
+    },
+    customicon: {
+        value: null
+    },
     ends: {
         value: null
     }

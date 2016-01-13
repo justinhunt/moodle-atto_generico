@@ -1,0 +1,3 @@
+Version 2016011100
+Added a new field for instructions for each template in the Generico Filter. If not blank, this will be displayed in the popup dialog for each template when using the Generico Atto plugin.
+Also added the ability to upload a custom icon, in place of the nice grey G that is the current icon. Apparently G connotes "bold" in some languages so it can be confusing.

@@ -15,20 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Atto generico  version file.
+ * PoodLL Anywhere settings.
  *
- * @package    atto_generico
- * @copyright  COPYRIGHTINFO
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   atto_poodll
+ * @copyright 2014 Justin Hunt {@link http://www.poodll.com}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2016011100;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2013110500;        // Requires this Moodle version.
-$plugin->component = 'atto_generico';  // Full name of the plugin (used for diagnostics).
-$plugin->maturity  = MATURITY_STABLE;
-// Human readable version informatiomn
-$plugin->release   = '1.0.4 (Build 2016011100)';
-$plugin->dependencies = array('filter_generico' => 2016011100);
+$ADMIN->add('editoratto', new admin_category('atto_generico', new lang_string('pluginname', 'atto_generico')));
 
+$settings = new admin_settingpage('atto_generico_settings', new lang_string('settings', 'atto_generico'));
+if ($ADMIN->fulltree) {
+
+	//A customizable editor icon for Generico
+	$name = 'atto_generico/editoricon';
+	$title =get_string('editoricon', 'atto_generico');
+	$description = get_string('editoricon_desc', 'atto_generico');
+	$settings->add(new admin_setting_configstoredfile($name, $title, $description, 'editoricon'));
+
+}

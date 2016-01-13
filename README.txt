@@ -1,7 +1,8 @@
 Generico for Moodle Atto
 
 This is a companion for the Moodle Generico filter. It will display a button and a form for each Generico filter template you have declared.
-It will not work without the Generico Filter. You *must* install that first or at the same time.
+It will not work without the Generico Filter. You *must* install that first or at the same time. The current version depends on a version of the Generico filter that only runs on Moodle 2.9 ad greater.
+If your version of Moodle is older than that, please visit https://moodle.org/plugins/filter_generico to get a version compatible with your version of Moodle.
 
 1. Download
 ============
