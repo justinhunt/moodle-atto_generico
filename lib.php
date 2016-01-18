@@ -92,9 +92,13 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 
 		//we need to reallocate array keys if the array size was changed in unique'ifying it
 		//we also take the opportunity to remove user variables, since they aren't needed here.
+		//NB DATASET can be referred to without the :
 		while (count($uniquevariables) > 0) {
 			$tempvar = array_shift($uniquevariables);
-			if (strpos($tempvar, 'COURSE:') === false && strpos($tempvar, 'USER:') === false && $tempvar != 'AUTOID') {
+			if (strpos($tempvar, 'COURSE:') === false
+				&& strpos($tempvar, 'USER:') === false
+				&& strpos($tempvar, 'DATASET') === false
+				&& $tempvar != 'AUTOID') {
 				$usevariables[] = $tempvar;
 			}
 		}
