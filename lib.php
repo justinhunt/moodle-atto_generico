@@ -86,7 +86,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 		//NB each of the $allvariables contains an array of variables (not a string)
 		//there might be duplicates where the variable is used multiple times in a template
 		//se we uniqu'ify it. That makes it look complicated. But we are just removing doubles
-		$allvariables = atto_generico_fetch_variables($templates['template_' . $tempindex] . $templates['templatescript_' . $tempindex]);
+		$allvariables = atto_generico_fetch_variables($templates['template_' . $tempindex] . $templates['templatescript_' . $tempindex] . $templates['datasetvars_' . $tempindex]);
 		$uniquevariables = array_unique($allvariables);
 		$usevariables = array();
 

@@ -1,3 +1,6 @@
+Version 2016011101
+Fixed bug where datavars variable form fields were not being displayed in popup form
+
 Version 2016011100
 Added support for DATASET variable
 
