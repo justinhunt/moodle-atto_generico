@@ -98,6 +98,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 			if (strpos($tempvar, 'COURSE:') === false
 				&& strpos($tempvar, 'USER:') === false
 				&& strpos($tempvar, 'DATASET') === false
+				&& $tempvar != 'MOODLEPAGEID' 
 				&& $tempvar != 'AUTOID') {
 				$usevariables[] = $tempvar;
 			}

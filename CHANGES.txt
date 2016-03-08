@@ -1,3 +1,6 @@
+Version 2016030900
+Added support for MOODLEPAGEID variable. This allows you to get the id parameter to the URL of the Moodle page
+
 Version 2016011101
 Fixed bug where datavars variable form fields were not being displayed in popup form
 
