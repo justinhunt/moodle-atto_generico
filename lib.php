@@ -72,7 +72,10 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 	}
 	//put our template into a form thats easy to process in JS
 	for ($tempindex = 1; $tempindex < $templatecount; $tempindex++) {
-		if (empty($templates['template_' . $tempindex])) {
+		if (empty($templates['template_' . $tempindex]) && 
+			empty($templates['templatescript_' . $tempindex]) &&
+			empty($templates['templatestyle_' . $tempindex])
+			) {
 			continue;
 		}
 
@@ -99,6 +102,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 				&& strpos($tempvar, 'USER:') === false
 				&& strpos($tempvar, 'DATASET') === false
 				&& $tempvar != 'MOODLEPAGEID' 
+				&& $tempvar != 'WWWROOT' 
 				&& $tempvar != 'AUTOID') {
 				$usevariables[] = $tempvar;
 			}
