@@ -100,7 +100,8 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 			$tempvar = array_shift($uniquevariables);
 			if (strpos($tempvar, 'COURSE:') === false
 				&& strpos($tempvar, 'USER:') === false
-				&& strpos($tempvar, 'DATASET') === false
+				&& strpos($tempvar, 'DATASET:') === false
+				&& strpos($tempvar, 'URLPARAM:') === false
 				&& $tempvar != 'MOODLEPAGEID' 
 				&& $tempvar != 'WWWROOT' 
 				&& $tempvar != 'AUTOID') {
