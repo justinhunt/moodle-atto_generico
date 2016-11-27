@@ -1,3 +1,6 @@
+Version 2016112701
+Fixed formatting of buttons for boost theme in Moodle 3.2
+
 Version 2016030900
 Added support for MOODLEPAGEID variable. This allows you to get the id parameter to the URL of the Moodle page
 
