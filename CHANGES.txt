@@ -1,3 +1,6 @@
+Version 2017040601
+Fixed so 'name' not 'key' of template was displayed in the popup dialog
+
 Version 2016112701
 Fixed formatting of buttons for boost theme in Moodle 3.2
 

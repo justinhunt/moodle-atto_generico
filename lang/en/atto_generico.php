@@ -23,8 +23,8 @@
  */
 
 $string['creategenerico'] = 'Create generico';
-$string['pluginname'] = 'generico (Atto)';
-$string['settings'] = 'generico (Atto)';
+$string['pluginname'] = 'Generico (Atto)';
+$string['settings'] = 'Generico (Atto)';
 $string['browse'] = 'Browse';
 $string['visible'] = 'Visible';
 $string['nothingtoinsert'] = 'Nothing to insert!';

@@ -49,7 +49,7 @@ var CSS = {
 
 var FIELDSHEADERTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-align">' +
-            '<h4 class="' + CSS.HEADERTEXT + '">{{headertext}} {{key}}</h4>' +
+            '<h4 class="' + CSS.HEADERTEXT + '">{{headertext}} {{name}}</h4>' +
             '<div class="' + CSS.INSTRUCTIONSTEXT + '">{{instructions}}</div>' +
         '</div>';
 
@@ -60,7 +60,7 @@ var BUTTONSHEADERTEMPLATE = '' +
         
 var BUTTONTEMPLATE = '' +
         '<div id="{{elementid}}_{{innerform}}" class="atto_generico_buttons mdl-align">' +
-            '<button class="' + CSS.KEYBUTTON + '_{{templateindex}}">{{key}}</button>' +
+            '<button class="' + CSS.KEYBUTTON + '_{{templateindex}}">{{name}}</button>' +
         '</div>';
 		
 var FIELDTEMPLATE = '' +
@@ -210,9 +210,10 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
 		}
 		var template = Y.Handlebars.compile(FIELDSHEADERTEMPLATE),
             	content = Y.Node.create(template({
-                key: this.get('keys')[templateindex],
-                headertext: useheadertext,
-                instructions: instructions
+            	    key: this.get('keys')[templateindex],
+                    name: this.get('names')[templateindex],
+                    headertext: useheadertext,
+                    instructions: instructions
             }));
         var header = content;
 		
@@ -272,6 +273,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     
     	var allcontent=[];
     	var thekey=this.get('keys')[templateindex];
+       var thename=this.get('names')[templateindex];
     	var thevariables=this.get('variables')[templateindex];
     	var thedefaults=this.get('defaults')[templateindex];
     	
@@ -341,12 +343,12 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     _getButtonsForKeys: function(clickedicon) {
     
     	var allcontent=[];
-    	 Y.Array.each(this.get('keys'), function(thekey, currentindex) { 	 
+    	 Y.Array.each(this.get('names'), function(thename, currentindex) {
             //loop start
              var template = Y.Handlebars.compile(BUTTONTEMPLATE),
             	content = Y.Node.create(template({
             	elementid: this.get('host').get('elementid'),
-                key: thekey,
+                name: thename,
                 templateindex: currentindex
             }));
             this._form = content;
@@ -387,6 +389,7 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
         
         var retstring = "{GENERICO:type=";
         var thekey = this.get('keys')[templateindex];
+        var thename = this.get('names')[templateindex];
         var thevariables=this.get('variables')[templateindex];
         var thedefaults=this.get('defaults')[templateindex];
         var theend=this.get('ends')[templateindex];
@@ -427,6 +430,10 @@ Y.namespace('M.atto_generico').Button = Y.Base.create('button', Y.M.editor_atto.
     },
 
     keys: {
+        value: null
+    },
+
+    names: {
         value: null
     },
 

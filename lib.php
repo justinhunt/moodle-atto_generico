@@ -60,6 +60,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 
 	$instructions = array();
 	$keys = array();
+    $names = array();
 	$variables = array();
 	$defaults = array();
 	$ends = array();
@@ -81,6 +82,14 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 
 		//stash the key for this tempalte
 		$keys[] = $templates['templatekey_' . $tempindex];
+
+        //stash the name for this template
+        $usename = trim($templates['templatename_' . $tempindex]);
+        if($usename==''){
+            $names[] = $templates['templatekey_' . $tempindex];
+        }else{
+            $names[]=$usename;
+        }
 
 		//instructions
 		//stash the instructions for this template
@@ -127,6 +136,7 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 	$params = array();
 	$params['customicon']=rawurlencode($customicon);
 	$params['keys'] = $keys;
+    $params['names'] = $names;
 	$params['instructions'] = $instructions;
 	$params['variables'] = $variables;
 	$params['defaults'] = $defaults;
