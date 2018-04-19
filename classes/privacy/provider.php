@@ -15,19 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for Atto Poodll.
+ * Privacy Subsystem implementation for Atto Generico.
  *
- * @package    atto_poodll
+ * @package    atto_generico
  * @copyright  2018 Justin Hunt https://poodll.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace atto_poodll\privacy;
+namespace atto_generico\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem for atto_poodll implementing null_provider.
+ * Privacy Subsystem for atto_generico implementing null_provider.
  *
  * @copyright  2018 Justin Hunt https://poodll.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
