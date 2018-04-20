@@ -18,7 +18,7 @@
  * Strings for component 'atto_generico', language 'en'.
  *
  * @package    atto_generico
- * @copyright  COPYRIGHTINFO
+ * @copyright  2018 Justin Hunt (https://poodll.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,3 +39,4 @@ $string['chooseinsert'] = 'What do you want to insert?';
 $string['generico:visible'] = 'visible';
 $string['editoricon']='Editor Icon';
 $string['editoricon_desc']='The default icon on the Atto editor for Generico is a grey G. You can change this by uploading a more appropriate icon here if you wish. Make it 16x16 pixels png and grey on a transparent background.';
+$string['privacy:metadata'] = 'The atto_generico plugin does not store any personal data.';
