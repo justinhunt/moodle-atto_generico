@@ -113,7 +113,8 @@ function atto_generico_params_for_js($elementid, $options, $fpoptions)
 				&& strpos($tempvar, 'URLPARAM:') === false
 				&& $tempvar != 'MOODLEPAGEID' 
 				&& $tempvar != 'WWWROOT' 
-				&& $tempvar != 'AUTOID') {
+				&& $tempvar != 'AUTOID'
+                && $tempvar != 'CLOUDPOODLLTOKEN') {
 				$usevariables[] = $tempvar;
 			}
 		}
